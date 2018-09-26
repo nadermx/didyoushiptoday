@@ -1,0 +1,22 @@
+{
+  "name": "didishiptoday",
+  "homepage": "https://github.com/nadermx/didishiptoday",
+  "authors": [
+    "john <john@nader.mx>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1"
+  }
+}

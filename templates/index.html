@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" type="image/png" href="/static/ship.png"/>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="/static/ship.png">
+    {% block head%}
+    <title>{% block title %}Did You Ship Today?{% endblock %}</title>
+    <meta name="description" content="Did You Ship is the worlds most famouse site determined to help makers see if other makers shipped">
+    {% endblock %}
+    <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark bg-fade fixed-top">
+        <a class="navbar-brand" href="/">Did You Ship Today?</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="/login">Login</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link" href="/signup">Sign Up</a>-->
+            <!--</li>-->
+        </div>
+    </nav>
+</div>
+{% block content %}
+<div class="container text-center">
+    <img src="/static/ship.png" alt="Shipping" class="rounded" height="42" width="42">
+    <h1>Did I Ship Today?</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <form action="/yes" method="post">
+                    <button type="submit" class="btn btn-block btn-primary">YES</button>
+                </form>
+            </div>
+            <div class="col-sm-6">
+                <form action="/no" method="post">
+                    <button type="submit" class="btn btn-block btn-primary">NO</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<div class="footer fixed-bottom text-center">
+    <h6>By <a href="https://john.nader.mx">nadermx</a> - Copyright © 2018 - <a href="mailto:hello@johnathannader.com">hello@johnathannader.com</a>
+        see the <a href="https://github.com/nadermx/didishiptoday">Source Code</a></h6>
+</div>
+{% block scripts %}
+<script type="text/javascript" src="/static/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+{% endblock %}
+</body>
+</html>

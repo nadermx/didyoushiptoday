@@ -1,0 +1,15 @@
+click==6.7
+crc16==0.1.1
+docopt==0.6.2
+Flask==1.0.2
+Flask-Login==0.4.1
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+passlib==1.7.1
+pony==0.8.dev0
+psycopg2==2.7.5
+psycopg2-binary==2.7.5
+python-redis==0.2.1
+redis==2.10.6
+Werkzeug==0.14.1

@@ -1,0 +1,13 @@
+
+{% extends "index.html" %}
+{% block head%}
+<title>{% block title %}NO - Did You Ship Today?{% endblock %}</title>
+<meta name="description" content="You failed youreself and did not ship!">
+{% endblock %}
+{% block content %}
+<div class="container-fluid content text-center">
+    <h1>NO</h1>
+    <h2>{{ no }} makers have NOT shipped today</h2>
+    <h3>A total of {{ shipped }} said if they shipped or not today, that means {{ percent }}% are NOT shipping today!</h2>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+body {
+    background-color:black;
+      margin-top: 60px;
+}
+
+h1 {
+    color: green;
+}
+
+h2 {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+h6 {
+    color: white;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.navbar-scroll {
+  background-color: rgba(0,123,255,0.4);
+  transition: background-color 0.5s;
+}
+@media(max-width: 768px){
+    .navbar {background-color: black !important; }
+}
+/*
