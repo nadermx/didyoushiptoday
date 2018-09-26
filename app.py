@@ -49,7 +49,8 @@ def no():
         anon_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         if not r.get(anon_ip):
             end_of_day = datetime.utcnow().replace(hour=23, minute=59, second=59, microsecond=999)
-            r.setex(anon_ip, 'visited_today', end_of_day)
+            r.set(anon_ip, anon_ip)
+            r.expireat(anon_ip, end_of_day)
             models.Ship(no=True, dt_shipped=datetime.utcnow())
     today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
