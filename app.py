@@ -29,6 +29,7 @@ def unauthorized():
 def yes():
     if current_user.is_authenticated:
         models.Ship(yes=True, user=models.User[current_user.id], dt_shipped=datetime.utcnow)
+        models.commit()
     else:
         anon_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         if not r.get(anon_ip):
@@ -46,6 +47,8 @@ def yes():
 def no():
     if current_user.is_authenticated:
         models.Ship(no=True, user=models.User[current_user.id], dt_shipped=datetime.utcnow)
+        models.commit()
+
     else:
         anon_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         if not r.get(anon_ip):
