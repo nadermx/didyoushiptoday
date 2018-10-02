@@ -37,26 +37,25 @@ def yes():
     today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
     yes = shipped.filter(lambda y: y.yes).count()
-    return render_template('yes.html', shipped=shipped.count(), yes=yes, percent=int(yes)/int(shipped.count())*100)
+    if shipped.count() == 0:
+        shipped = 1
+    return render_template('yes.html', shipped=shipped, yes=yes, percent=int(yes)/int(shipped.count())*100)
 
 @app.route('/no', methods=['POST'])
 def no():
-    if current_user.is_authenticated:
-        models.Ship(no=True, user=models.User[current_user.id], dt_shipped=datetime.utcnow())
+    anon_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    if not r.get(anon_ip):
+        end_of_day = datetime.utcnow().replace(hour=23, minute=59, second=59, microsecond=999)
+        r.set(anon_ip, anon_ip)
+        r.expireat(anon_ip, end_of_day)
+        models.Ship(no=True, dt_shipped=datetime.utcnow())
         models.commit()
-
-    else:
-        anon_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-        if not r.get(anon_ip):
-            end_of_day = datetime.utcnow().replace(hour=23, minute=59, second=59, microsecond=999)
-            r.set(anon_ip, anon_ip)
-            r.expireat(anon_ip, end_of_day)
-            models.Ship(no=True, dt_shipped=datetime.utcnow())
-            models.commit()
     today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
     no = shipped.filter(lambda n: n.no).count()
-    return render_template('no.html', shipped=shipped.count(), no=no, percent=int(no)/int(shipped.count())*100)
+    if shipped.count() == 0:
+        shipped = 1
+    return render_template('no.html', shipped=shipped, no=no, percent=int(no)/int(shipped.count())*100)
 
 
 
