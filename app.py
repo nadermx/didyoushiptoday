@@ -8,7 +8,10 @@ from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.config.from_object('config')
-
+app.config.update(
+    DEBUG=True,
+    SECRET_KEY=app.config.SECRET_KEY,
+)
 CSRFProtect(app)
 
 
