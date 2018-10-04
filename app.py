@@ -4,12 +4,12 @@ from pony.orm import *
 import models
 from datetime import datetime
 import redis
-# from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 app.config.from_object('config')
 
-# CSRFProtect(app)
+CSRFProtect(app)
 
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
