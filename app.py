@@ -41,7 +41,7 @@ def yes():
     today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
     yes = shipped.filter(lambda y: y.yes).count()
-    return render_template('yes.html', shipped=shipped.count(), yes=yes, percent=int(yes)/int(shipped.count())*100)
+    return render_template('yes.html', shipped=shipped.count(), yes=yes, percent=(int(yes))/(int(shipped.count()))*100)
 
 @app.route('/no', methods=['POST'])
 def no():
@@ -58,7 +58,7 @@ def no():
     today_utc = datetime.utcnow().replace(hour=0, minute=0, second=0, microsecond=0)
     shipped = models.select(s for s in models.Ship if s.dt_shipped > today_utc)
     no = shipped.filter(lambda n: n.no).count()
-    return render_template('no.html', shipped=shipped.count(), no=no, percent=int(no)/int(shipped.count())*100)
+    return render_template('no.html', shipped=shipped.count(), no=no, percent=(int(no))/(int(shipped.count()))*100)
 
 
 
