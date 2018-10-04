@@ -9,12 +9,8 @@ import config
 
 app = Flask(__name__)
 app.config.from_object('config')
-app.config.update(
-    DEBUG=True,
-    SECRET_KEY=config.SECRET_KEY,
-    WTF_CSRF_SECRET_KEY=config.WTF_CSRF_SECRET_KEY
-)
-CSRFProtect(app)
+
+csrf = CSRFProtect(app)
 
 
 r = redis.StrictRedis(host='localhost', port=6379, db=0)

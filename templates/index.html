@@ -8,7 +8,8 @@
     <meta property="og:image" content="/static/ship.png">
     {% block head%}
     <title>{% block title %}Did You Ship Today?{% endblock %}</title>
-    <meta name="description" content="Did You Ship is the worlds most famouse site determined to help makers see if other makers shipped">
+    <meta name="description"
+          content="Did You Ship is the worlds most famouse site determined to help makers see if other makers shipped">
     {% endblock %}
     <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/main.css">
@@ -18,18 +19,18 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-fade fixed-top">
         <a class="navbar-brand" href="/">Did You Ship Today?</a>
         <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"-->
-                <!--aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">-->
-            <!--<span class="navbar-toggler-icon"></span>-->
+        <!--aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
         <!--</button>-->
         <!--<div class="collapse navbar-collapse" id="navbarsExampleDefault">-->
-            <!--<ul class="navbar-nav mr-auto">-->
-            <!--</ul>-->
-            <!--&lt;!&ndash;<li class="nav-item">&ndash;&gt;-->
-            <!--&lt;!&ndash;<a class="nav-link" href="/login">Login</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="nav-item">&ndash;&gt;-->
-            <!--&lt;!&ndash;<a class="nav-link" href="/signup">Sign Up</a>&ndash;&gt;-->
-            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--<ul class="navbar-nav mr-auto">-->
+        <!--</ul>-->
+        <!--&lt;!&ndash;<li class="nav-item">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="nav-link" href="/login">Login</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+        <!--&lt;!&ndash;<li class="nav-item">&ndash;&gt;-->
+        <!--&lt;!&ndash;<a class="nav-link" href="/signup">Sign Up</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;</li>&ndash;&gt;-->
         <!--</div>-->
     </nav>
 </div>
@@ -41,11 +42,15 @@
         <div class="row">
             <div class="col-sm-6">
                 <form action="/yes" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
                     <button type="submit" class="btn btn-block btn-primary">YES</button>
                 </form>
             </div>
             <div class="col-sm-6">
                 <form action="/no" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
                     <button type="submit" class="btn btn-block btn-primary">NO</button>
                 </form>
             </div>
@@ -69,6 +74,7 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-126490421-1');
+
 </script>
 
 {% endblock %}
