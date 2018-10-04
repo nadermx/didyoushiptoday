@@ -5,12 +5,14 @@ import models
 from datetime import datetime
 import redis
 from flask_wtf.csrf import CSRFProtect
+import config
 
 app = Flask(__name__)
 app.config.from_object('config')
 app.config.update(
     DEBUG=True,
-    SECRET_KEY=app.config.SECRET_KEY,
+    SECRET_KEY=config.SECRET_KEY,
+    WTF_CSRF_SECRET_KEY=config.WTF_CSRF_SECRET_KEY
 )
 CSRFProtect(app)
 
