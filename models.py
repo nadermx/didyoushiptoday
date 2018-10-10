@@ -35,5 +35,6 @@ class Ship(db.Entity):
     yes = Optional(bool)
     no = Optional(bool)
     dt_shipped = Optional(datetime, default=datetime.utcnow)
+    ip_address = Optional(unicode)
 
 sql_debug(False)
