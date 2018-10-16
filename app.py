@@ -50,7 +50,7 @@ def no():
                                percent=(int(no)) / (int(shipped.count())) * 100)
     models.Ship(yno=True, dt_shipped=datetime.utcnow(), ip_address=anon_ip)
     models.commit()
-    yes = shipped.filter(lambda n: n.no).count()
+    no = shipped.filter(lambda n: n.no).count()
     return render_template('no.html', shipped=shipped.count(), no=no, percent=(int(no))/(int(shipped.count()))*100)
 
 @app.route('/login', methods=['POST', 'GET'])
