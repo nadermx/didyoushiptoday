@@ -48,7 +48,7 @@ def no():
         no = shipped.filter(lambda n: n.no).count()
         return render_template('no.html', shipped=shipped.count(), no=no,
                                percent=(int(no)) / (int(shipped.count())) * 100)
-    models.Ship(yno=True, dt_shipped=datetime.utcnow(), ip_address=anon_ip)
+    models.Ship(no=True, dt_shipped=datetime.utcnow(), ip_address=anon_ip)
     models.commit()
     no = shipped.filter(lambda n: n.no).count()
     return render_template('no.html', shipped=shipped.count(), no=no, percent=(int(no))/(int(shipped.count()))*100)
